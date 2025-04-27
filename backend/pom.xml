@@ -20,8 +20,8 @@
   <packaging>pom</packaging>
 
   <modules>
-    <!--<module>microservice-api-gateway</module>
-    <module>microservice-config-server</module>
+    <module>microservice-api-gateway</module>
+    <!--<module>microservice-config-server</module>
     <module>microservice-eureka</module>-->
   </modules>
   <properties>
