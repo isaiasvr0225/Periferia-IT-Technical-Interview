@@ -21,8 +21,8 @@
 
   <modules>
     <module>microservice-api-gateway</module>
-    <!--<module>microservice-config-server</module>
-    <module>microservice-eureka</module>-->
+    <module>microservice-config-server</module>
+    <module>microservice-eureka</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
