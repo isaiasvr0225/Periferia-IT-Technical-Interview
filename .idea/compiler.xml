@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -9,6 +10,7 @@
         <module name="microservice-api-gateway" />
         <module name="microservice-config-server" />
         <module name="microservice-eureka" />
+        <module name="microservice-tasks-manager" />
       </profile>
     </annotationProcessing>
   </component>
@@ -17,6 +19,7 @@
       <module name="microservice-api-gateway" options="-parameters" />
       <module name="microservice-config-server" options="-parameters" />
       <module name="microservice-eureka" options="-parameters" />
+      <module name="microservice-tasks-manager" options="-parameters" />
     </option>
   </component>
 </project>
