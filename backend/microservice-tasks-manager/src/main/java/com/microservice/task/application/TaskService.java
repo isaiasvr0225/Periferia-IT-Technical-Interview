@@ -1,9 +1,6 @@
 package com.microservice.task.application;
 
-import com.microservice.task.infrastructure.dto.JsonApiRequestDTO;
-import com.microservice.task.infrastructure.dto.JsonApiResponseDTO;
-import com.microservice.task.infrastructure.dto.SaveNewTaskDTO;
-import com.microservice.task.infrastructure.dto.TaskResponseDTO;
+import com.microservice.task.infrastructure.dto.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -44,10 +41,18 @@ public interface TaskService {
     /**
      * This method is used to update a task by id
      * @param id id
-     * @param saveNewTaskDTO SaveNewTaskDTO
+     * @param updateTaskDTO UpdateTaskDTO
      * @return HttpStatus
      */
-    HttpStatus updateById(UUID id, JsonApiRequestDTO<SaveNewTaskDTO> saveNewTaskDTO);
+    HttpStatus updateById(UUID id, JsonApiRequestDTO<UpdateTaskDTO> updateTaskDTO);
+
+    /**
+     * This method is used to update a task status by id
+     * @param id id
+     * @param newStatusName String
+     * @return HttpStatus
+     */
+    HttpStatus updateTaskStatusById(UUID id, String newStatusName);
 
     /**
      * This method is used to delete a task by id

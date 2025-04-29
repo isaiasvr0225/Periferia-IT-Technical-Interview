@@ -5,7 +5,8 @@ spring:
   application:
     name: ms-api-gateway
   config:
-    import: optional:configserver:http://microservice-config-server:8888
+    #import: optional:configserver:http://microservice-config-server:8888
+    import: optional:configserver:http://localhost:8888
 
   cloud:
     gateway:
@@ -14,9 +15,15 @@ spring:
           enabled: true
       routes:
         - id: ms-tasks-manager
-          uri: http://microservice-tasks-manager:8090
+          #uri: http://microservice-tasks-manager:8090
+          uri: http://localhost:8090
           predicates:
             - Path=/api/v1/tasks/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:4200"
 eureka:
   client:
     register-with-eureka: false

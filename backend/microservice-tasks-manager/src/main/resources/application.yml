@@ -5,10 +5,11 @@ spring:
   application:
     name: ms-tasks-manager
   config:
-    import: optional:configserver:http://microservice-config-server:8888
+    #import: optional:configserver:http://microservice-config-server:8888
+    import: optional:configserver:http://localhost:8888
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
@@ -21,8 +22,10 @@ spring:
         batch_versioned_data: true
         generate_statistics: true
   datasource:
+    #url: jdbc:postgresql://interview-db.cnm8isy225m1.us-east-2.rds.amazonaws.com:5432/interview-db
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
+    #password: iO66C6h4CQBUbzXzQdsB
     password: 1234
     hikari:
       data-source-properties.stringtype: unspecified
@@ -34,4 +37,5 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://microservice-eureka:8761/eureka
+      #defaultZone: http://microservice-eureka:8761/eureka
+      defaultZone: http://localhost:8761/eureka

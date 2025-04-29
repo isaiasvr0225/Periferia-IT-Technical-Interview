@@ -28,5 +28,9 @@ public @Entity class Task {
     private String title;
 
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "id_status")
+    private Status status;
 }
 

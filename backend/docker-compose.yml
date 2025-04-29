@@ -1,0 +1,27 @@
+services:
+  microservice-config-server:
+    image: microservice-config-server
+    ports:
+      - "8888:8888"
+
+  microservice-eureka:
+    image: microservice-eureka
+    ports:
+      - "8761:8761"
+    depends_on:
+      - microservice-config-server
+
+  microservice-api-gateway:
+    image: microservice-api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - microservice-config-server
+
+  microservice-product:
+    image: microservice-tasks-manager
+    ports:
+      - "8090:8090"
+    depends_on:
+      - microservice-config-server
+      - microservice-eureka

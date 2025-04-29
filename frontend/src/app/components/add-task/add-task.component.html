@@ -1,0 +1,34 @@
+@if(showForm) {
+  <app-button-form [icon]="faArrowUp" color="black" (isFormShowing)="showAddForm(false)"></app-button-form>
+
+  <form (ngSubmit)="onSubmit()" class="add-form">
+    <h2>Add new task</h2>
+    <div>
+      <label for="text">Title: </label>
+      <input
+        type="text"
+        name="text"
+        id="text"
+        class="form-control"
+        placeholder="Enter task title"
+        [(ngModel)]="taskTitle">
+    </div>
+
+    <div>
+      <label for="text">Description: </label>
+      <input
+        type="text"
+        name="text"
+        id="text"
+        class="form-control"
+        placeholder="Enter task description"
+        [(ngModel)]="taskDescription">
+    </div>
+
+    <input type="submit" value="Save task" class="btn btn-block mb-5">
+  </form>
+} @else {
+  <app-button-form [icon]="faPlus" color="green" (isFormShowing)="showAddForm(true)"></app-button-form>
+}
+
+

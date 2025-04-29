@@ -1,10 +1,7 @@
 package com.microservice.task.presentation.controller;
 
 import com.microservice.task.application.TaskService;
-import com.microservice.task.infrastructure.dto.JsonApiRequestDTO;
-import com.microservice.task.infrastructure.dto.JsonApiResponseDTO;
-import com.microservice.task.infrastructure.dto.SaveNewTaskDTO;
-import com.microservice.task.infrastructure.dto.TaskResponseDTO;
+import com.microservice.task.infrastructure.dto.*;
 import com.microservice.task.infrastructure.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -47,7 +44,7 @@ public @RestController class TaskController {
 
 
     //@PreAuthorize("permitAll()")
-    //@PreAuthorize("hasAnyRole('ADMIN', 'CARRIER')")
+    //@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/{taskId}")
     public ResponseEntity<JsonApiResponseDTO<TaskResponseDTO>> findById(@PathVariable(name = "taskId") UUID taskId) {
         return ResponseEntity.ok(this.taskService.findById(taskId));
@@ -64,11 +61,16 @@ public @RestController class TaskController {
 
     //@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PutMapping("/{taskId}")
-    public HttpStatus update(@PathVariable(name = "taskId") UUID taskId, @RequestBody JsonApiRequestDTO<SaveNewTaskDTO> newProductDTO) {
-        return this.taskService.updateById(taskId, newProductDTO);
+    public HttpStatus update(@PathVariable(name = "taskId") UUID taskId, @RequestBody JsonApiRequestDTO<UpdateTaskDTO> updateTaskDTO) {
+        return this.taskService.updateById(taskId, updateTaskDTO);
     }
 
-    //@PreAuthorize("hasAnyRole('ADMIN', 'CARRIER')")
+    @PutMapping("/{taskId}/update-status")
+    public HttpStatus updateTaskStatus(@PathVariable(name = "taskId") UUID taskId, @RequestParam(name = "status") String status) {
+        return this.taskService.updateTaskStatusById(taskId, status);
+    }
+
+    //@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @DeleteMapping("/{taskId}")
     public HttpStatus delete(@PathVariable(name = "taskId") UUID taskId) {
 

@@ -1,0 +1,10 @@
+<app-add-task (onAddTask)="addTask($event)"></app-add-task>
+
+@for (task of tasks; track $index) {
+  <app-task-item [task]="task"
+    (onDeleteTask)="deleteTask($event)"
+    (onToggleToReady)="toggleReady($event)"
+  ></app-task-item>
+} @empty {
+  <p class="mt-4">No tasks to show, add a new task.</p>
+}
